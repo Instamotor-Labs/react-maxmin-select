@@ -1,5 +1,5 @@
 import React from 'react';
-import ThemedSelect from './ThemedSelect';
+// import ThemedSelect from './ThemedSelect';
 
 class OptionMax extends React.Component {
     render() {
@@ -31,11 +31,12 @@ class MaxMin extends React.Component {
        var placeHolderMin = this.props.placeHolderMin;
        var placeHolderMax = this.props.placeHolderMax;
        var width = this.props.width;
+       var SelectBox = this.props.selectBox;
        return (
            <div>
-               <ThemedSelect
+               <SelectBox>
                    value={this.props.min || 'placeholder'}
-                   style={{width: this.props.width}}
+                   width={this.props.width}
                    className="W(1/2) IbBox Mt(16px)"
                    onChange={(ev)=>{
                        this.setState({min: ev.target.value});
@@ -46,11 +47,11 @@ class MaxMin extends React.Component {
                    {options.map((item)=>{
                        return <OptionMin max={this.state.max} year={item.value} yearLabel={item.label}/>
                    })}
-               </ThemedSelect>
+               </SelectBox>
                <span className="Mt(16px) D(ib) Mt(25px) Fz(14px) C(#94A2B5) Mstart(5px) Mend(5px)">to</span>
-               <ThemedSelect
+               <SelectBox>
                    value={this.props.max || 'placeholder'}
-                   style={{width: this.props.width}}
+                   width={this.props.width}
                    className="IbBox Mt(16px)"
                    onChange={(ev)=>{
                        this.setState({max: ev.target.value});
@@ -61,7 +62,7 @@ class MaxMin extends React.Component {
                    {options.map((item)=>{
                        return <OptionMax min={this.state.min} year={item.value} yearLabel={item.label}/>
                    })}
-               </ThemedSelect>
+               </SelectBox>
            </div>
        );
    }

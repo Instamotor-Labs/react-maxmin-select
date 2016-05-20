@@ -18,16 +18,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ThemedSelect = function (_React$Component) {
-    _inherits(ThemedSelect, _React$Component);
+var PlainSelect = function (_React$Component) {
+    _inherits(PlainSelect, _React$Component);
 
-    function ThemedSelect() {
-        _classCallCheck(this, ThemedSelect);
+    function PlainSelect() {
+        _classCallCheck(this, PlainSelect);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(ThemedSelect).apply(this, arguments));
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(PlainSelect).apply(this, arguments));
     }
 
-    _createClass(ThemedSelect, [{
+    _createClass(PlainSelect, [{
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -36,28 +36,15 @@ var ThemedSelect = function (_React$Component) {
                     defaultValue: this.props.defaultValue || 'placeholder',
                     value: this.props.value,
                     className: 'Bdrs(4px) ' + this.props.className,
-                    onChange: this.props.onChange,
-                    style: Object.assign({
-                        backgroundImage: 'url(https://s3-us-west-1.amazonaws.com/im-web-assets-dev/dropdowncaret.svg)',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundSize: '16px',
-                        backgroundPosition: '100% 50%',
-                        backgroundColor: 'transparent',
-                        height: '32px',
-                        paddingLeft: '10px',
-                        paddingRight: '22px',
-                        border: '1px solid #C3CCDA',
-                        fontSize: '14px',
-                        color: '#94A2B5'
-                    }, this.props.style)
+                    onChange: this.props.onChange
                 },
                 this.props.children
             );
         }
     }]);
 
-    return ThemedSelect;
+    return PlainSelect;
 }(_react2.default.Component);
 
-exports.default = ThemedSelect;
-//# sourceMappingURL=ThemedSelect.js.map
+exports.default = PlainSelect;
+//# sourceMappingURL=PlainSelect.js.map

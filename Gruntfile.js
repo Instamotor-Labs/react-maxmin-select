@@ -18,7 +18,7 @@ module.exports = function(grunt) {
             dist: {
                 files: {
                     'dist/MaxMin.js': 'src/MaxMin.js',
-                    'dist/ThemedSelect.js': 'src/ThemedSelect.js',
+                    'dist/PlainSelect.js': 'src/PlainSelect.js',
                     'dist/entry.js': './entry.js',
                     '__tests__/MaxMin.js': 'tests/MaxMin.js'
                 }

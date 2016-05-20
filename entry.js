@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import MaxMin from './MaxMin';
+import ThemedSelect from './ThemedSelect';
+import PlainSelect from './PlainSelect';
 
 // TODO: get max and min year from api - returned by search as {string} aggregations.min_year.value and aggregations.max_year.value
 var options = [
@@ -16,6 +18,7 @@ var min = 25000;
 var max = 200000;
 ReactDOM.render(
     <MaxMin
+        selectBox={PlainSelect}
         minCallback={(value)=>{
             console.log('min value: ', value);
             min = value;
