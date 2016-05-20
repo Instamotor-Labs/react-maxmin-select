@@ -10,10 +10,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ThemedSelect = require('./ThemedSelect');
-
-var _ThemedSelect2 = _interopRequireDefault(_ThemedSelect);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21,6 +17,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// import ThemedSelect from './ThemedSelect';
 
 var OptionMax = function (_React$Component) {
     _inherits(OptionMax, _React$Component);
@@ -91,20 +89,23 @@ var MaxMin = function (_React$Component3) {
             var placeHolderMin = this.props.placeHolderMin;
             var placeHolderMax = this.props.placeHolderMax;
             var width = this.props.width;
+            var SelectBox = this.props.selectBox;
             return _react2.default.createElement(
                 'div',
                 null,
                 _react2.default.createElement(
-                    _ThemedSelect2.default,
-                    {
-                        value: this.props.min || 'placeholder',
-                        style: { width: this.props.width },
-                        className: 'W(1/2) IbBox Mt(16px)',
-                        onChange: function onChange(ev) {
-                            _this4.setState({ min: ev.target.value });
-                            minCallback(ev.target.value);
-                        }
+                    SelectBox,
+                    null,
+                    'value=',
+                    this.props.min || 'placeholder',
+                    'width=',
+                    this.props.width,
+                    'className="W(1/2) IbBox Mt(16px)" onChange=',
+                    function (ev) {
+                        _this4.setState({ min: ev.target.value });
+                        minCallback(ev.target.value);
                     },
+                    '>',
                     _react2.default.createElement(
                         'option',
                         { disabled: true, value: 'placeholder' },
@@ -120,16 +121,18 @@ var MaxMin = function (_React$Component3) {
                     'to'
                 ),
                 _react2.default.createElement(
-                    _ThemedSelect2.default,
-                    {
-                        value: this.props.max || 'placeholder',
-                        style: { width: this.props.width },
-                        className: 'IbBox Mt(16px)',
-                        onChange: function onChange(ev) {
-                            _this4.setState({ max: ev.target.value });
-                            maxCallback(ev.target.value);
-                        }
+                    SelectBox,
+                    null,
+                    'value=',
+                    this.props.max || 'placeholder',
+                    'width=',
+                    this.props.width,
+                    'className="IbBox Mt(16px)" onChange=',
+                    function (ev) {
+                        _this4.setState({ max: ev.target.value });
+                        maxCallback(ev.target.value);
                     },
+                    '>',
                     _react2.default.createElement(
                         'option',
                         { disabled: true, value: 'placeholder' },
