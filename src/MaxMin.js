@@ -1,5 +1,8 @@
 import React from 'react';
-// import ThemedSelect from './ThemedSelect';
+
+if(typeof window !== 'undefined') {
+    require('./atomic.css');
+}
 
 class OptionMax extends React.Component {
     render() {
@@ -16,8 +19,6 @@ class OptionMin extends React.Component {
         );
     }
 }
-
-
 
 class MaxMin extends React.Component {
     constructor() {
