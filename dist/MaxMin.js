@@ -10,6 +10,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _PlainSelect = require('./PlainSelect');
+
+var _PlainSelect2 = _interopRequireDefault(_PlainSelect);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -71,12 +75,15 @@ var OptionMin = function (_React$Component2) {
 var MaxMin = function (_React$Component3) {
     _inherits(MaxMin, _React$Component3);
 
-    function MaxMin() {
+    function MaxMin(props) {
         _classCallCheck(this, MaxMin);
 
         var _this3 = _possibleConstructorReturn(this, Object.getPrototypeOf(MaxMin).call(this));
 
-        _this3.state = {};
+        _this3.state = {
+            min: props.min || 'placeholder',
+            max: props.max || 'placeholder'
+        };
         return _this3;
     }
 
@@ -97,24 +104,24 @@ var MaxMin = function (_React$Component3) {
                 null,
                 _react2.default.createElement(
                     SelectBox,
-                    null,
-                    'value=',
-                    this.props.min || 'placeholder',
-                    'width=',
-                    this.props.width,
-                    'className="W(1/2) IbBox Mt(16px)" onChange=',
-                    function (ev) {
-                        _this4.setState({ min: ev.target.value });
-                        minCallback(ev.target.value);
+                    {
+                        foo: 'bar',
+                        value: this.state.min,
+                        width: this.props.width,
+                        className: 'IbBox Mt(16px)',
+                        onChange: function onChange(ev) {
+                            console.log('calling min callback ');
+                            _this4.setState({ min: ev.target.value });
+                            minCallback(ev.target.value);
+                        }
                     },
-                    '>',
                     _react2.default.createElement(
                         'option',
                         { disabled: true, value: 'placeholder' },
                         placeHolderMin
                     ),
-                    options.map(function (item) {
-                        return _react2.default.createElement(OptionMin, { max: _this4.state.max, year: item.value, yearLabel: item.label });
+                    options.map(function (item, idx) {
+                        return _react2.default.createElement(OptionMin, { key: 'min-' + idx, max: _this4.state.max, year: item.value, yearLabel: item.label });
                     })
                 ),
                 _react2.default.createElement(
@@ -124,24 +131,22 @@ var MaxMin = function (_React$Component3) {
                 ),
                 _react2.default.createElement(
                     SelectBox,
-                    null,
-                    'value=',
-                    this.props.max || 'placeholder',
-                    'width=',
-                    this.props.width,
-                    'className="IbBox Mt(16px)" onChange=',
-                    function (ev) {
-                        _this4.setState({ max: ev.target.value });
-                        maxCallback(ev.target.value);
+                    {
+                        value: this.state.max,
+                        width: this.props.width,
+                        className: 'IbBox Mt(16px)',
+                        onChange: function onChange(ev) {
+                            _this4.setState({ max: ev.target.value });
+                            maxCallback(ev.target.value);
+                        }
                     },
-                    '>',
                     _react2.default.createElement(
                         'option',
                         { disabled: true, value: 'placeholder' },
                         placeHolderMax
                     ),
-                    options.map(function (item) {
-                        return _react2.default.createElement(OptionMax, { min: _this4.state.min, year: item.value, yearLabel: item.label });
+                    options.map(function (item, idx) {
+                        return _react2.default.createElement(OptionMax, { key: 'max-' + idx, min: _this4.state.min, year: item.value, yearLabel: item.label });
                     })
                 )
             );

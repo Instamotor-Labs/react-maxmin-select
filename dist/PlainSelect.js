@@ -33,10 +33,10 @@ var PlainSelect = function (_React$Component) {
             return _react2.default.createElement(
                 'select',
                 {
-                    defaultValue: this.props.defaultValue || 'placeholder',
                     value: this.props.value,
                     className: 'Bdrs(4px) ' + this.props.className,
-                    onChange: this.props.onChange
+                    onChange: this.props.onChange,
+                    style: { width: this.props.width }
                 },
                 this.props.children
             );
