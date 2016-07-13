@@ -4,15 +4,13 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
-
-var _PlainSelect = require('./PlainSelect');
-
-var _PlainSelect2 = _interopRequireDefault(_PlainSelect);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21,10 +19,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-if (typeof window !== 'undefined') {
-    require('./atomic.css');
-}
 
 var OptionMax = function (_React$Component) {
     _inherits(OptionMax, _React$Component);
@@ -92,57 +86,48 @@ var MaxMin = function (_React$Component3) {
         value: function render() {
             var _this4 = this;
 
-            var options = this.props.options || [];
+            var SelectBox = this.props.selectBox;
+            var options = this.props.options;
             var minCallback = this.props.minCallback;
             var maxCallback = this.props.maxCallback;
             var placeHolderMin = this.props.placeHolderMin;
             var placeHolderMax = this.props.placeHolderMax;
-            var width = this.props.width;
-            var SelectBox = this.props.selectBox;
+            var placeholderValue = this.props.placeholderValue;
+
             return _react2.default.createElement(
                 'div',
                 null,
                 _react2.default.createElement(
                     SelectBox,
-                    {
-                        foo: 'bar',
+                    _extends({}, this.props.minProps, {
                         value: this.state.min,
-                        width: this.props.width,
-                        className: 'IbBox Mt(16px)',
                         onChange: function onChange(ev) {
-                            console.log('calling min callback ');
                             _this4.setState({ min: ev.target.value });
                             minCallback(ev.target.value);
                         }
-                    },
+                    }),
                     _react2.default.createElement(
                         'option',
-                        { disabled: true, value: 'placeholder' },
+                        { disabled: true, value: placeholderValue },
                         placeHolderMin
                     ),
                     options.map(function (item, idx) {
                         return _react2.default.createElement(OptionMin, { key: 'min-' + idx, max: _this4.state.max, year: item.value, yearLabel: item.label });
                     })
                 ),
-                _react2.default.createElement(
-                    'span',
-                    { className: 'Mt(16px) D(ib) Mt(25px) Fz(14px) C(#94A2B5) Mstart(5px) Mend(5px)' },
-                    'to'
-                ),
+                this.props.separator,
                 _react2.default.createElement(
                     SelectBox,
-                    {
+                    _extends({}, this.props.maxProps, {
                         value: this.state.max,
-                        width: this.props.width,
-                        className: 'IbBox Mt(16px)',
                         onChange: function onChange(ev) {
                             _this4.setState({ max: ev.target.value });
                             maxCallback(ev.target.value);
                         }
-                    },
+                    }),
                     _react2.default.createElement(
                         'option',
-                        { disabled: true, value: 'placeholder' },
+                        { disabled: true, value: placeholderValue },
                         placeHolderMax
                     ),
                     options.map(function (item, idx) {
@@ -155,6 +140,21 @@ var MaxMin = function (_React$Component3) {
 
     return MaxMin;
 }(_react2.default.Component);
+
+MaxMin.propTypes = {
+    selectBox: _react.PropTypes.func,
+    options: _react.PropTypes.array,
+    minCallBack: _react.PropTypes.func,
+    maxCallBack: _react.PropTypes.func,
+    placeHolderMin: _react.PropTypes.node,
+    placeHolderMax: _react.PropTypes.node,
+    placeHolderValue: _react.PropTypes.string
+};
+
+MaxMin.defaultProps = {
+    options: [],
+    placeHoldervalue: 'placeholder'
+};
 
 exports.default = MaxMin;
 //# sourceMappingURL=MaxMin.js.map

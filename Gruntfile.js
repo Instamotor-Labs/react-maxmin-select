@@ -6,7 +6,7 @@ module.exports = function(grunt) {
                     configFile: './configs/atomizer.js'
                 },
                 files: [{
-                    src: ['./src/**/*.js'],
+                    src: ['./src/**/*.js', './entry.js'],
                     dest: './dist/atomic.css'
                 }]
             }

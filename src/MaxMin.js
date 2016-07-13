@@ -1,9 +1,4 @@
-import React from 'react';
-import PlainSelect from './PlainSelect';
-
-if(typeof window !== 'undefined') {
-    require('./atomic.css');
-}
+import React, {PropTypes} from 'react';
 
 class OptionMax extends React.Component {
     render() {
@@ -29,50 +24,63 @@ class MaxMin extends React.Component {
             max: props.max || 'placeholder'
         };
     }
-   render() {
-       var options = this.props.options || [];
-       var minCallback = this.props.minCallback;
-       var maxCallback = this.props.maxCallback;
-       var placeHolderMin = this.props.placeHolderMin;
-       var placeHolderMax = this.props.placeHolderMax;
-       var width = this.props.width;
-       var SelectBox = this.props.selectBox;
-       return (
-           <div>
-               <SelectBox
-                   foo="bar"
-                   value={this.state.min}
-                   width={this.props.width}
-                   className="IbBox Mt(16px)"
-                   onChange={(ev)=>{
-                       console.log('calling min callback ');
-                       this.setState({min: ev.target.value});
-                       minCallback(ev.target.value);
-                   }}
-               >
-                   <option disabled value="placeholder">{placeHolderMin}</option>
-                   {options.map((item, idx)=>{
-                       return <OptionMin key={'min-' + idx} max={this.state.max} year={item.value} yearLabel={item.label}/>
-                   })}
-               </SelectBox>
-               <span className="Mt(16px) D(ib) Mt(25px) Fz(14px) C(#94A2B5) Mstart(5px) Mend(5px)">to</span>
-               <SelectBox
-                   value={this.state.max}
-                   width={this.props.width}
-                   className="IbBox Mt(16px)"
-                   onChange={(ev)=>{
-                       this.setState({max: ev.target.value});
-                       maxCallback(ev.target.value);
-                   }}
-               >
-                   <option disabled value="placeholder">{placeHolderMax}</option>
-                   {options.map((item, idx)=>{
-                       return <OptionMax key={'max-' + idx} min={this.state.min} year={item.value} yearLabel={item.label}/>
-                   })}
-               </SelectBox>
-           </div>
-       );
+
+    render() {
+        var SelectBox = this.props.selectBox;
+        var options = this.props.options;
+        var minCallback = this.props.minCallback;
+        var maxCallback = this.props.maxCallback;
+        var placeHolderMin = this.props.placeHolderMin;
+        var placeHolderMax = this.props.placeHolderMax;
+        let placeholderValue = this.props.placeholderValue;
+
+        return (
+            <div>
+                <SelectBox
+                    {...this.props.minProps}
+                    value={this.state.min}
+                    onChange={(ev)=>{
+                        this.setState({min: ev.target.value});
+                        minCallback(ev.target.value);
+                    }}
+                >
+                    <option disabled value={placeholderValue}>{placeHolderMin}</option>
+                    {options.map((item, idx)=>{
+                        return <OptionMin key={'min-' + idx} max={this.state.max} year={item.value} yearLabel={item.label}/>
+                    })}
+                </SelectBox>
+               {this.props.separator}
+                <SelectBox
+                    {...this.props.maxProps}
+                    value={this.state.max}
+                    onChange={(ev)=>{
+                        this.setState({max: ev.target.value});
+                        maxCallback(ev.target.value);
+                    }}
+                >
+                    <option disabled value={placeholderValue}>{placeHolderMax}</option>
+                    {options.map((item, idx)=>{
+                        return <OptionMax key={'max-' + idx} min={this.state.min} year={item.value} yearLabel={item.label}/>
+                    })}
+                </SelectBox>
+            </div>
+        );
    }
+}
+
+MaxMin.propTypes = {
+    selectBox: PropTypes.func,
+    options: PropTypes.array,
+    minCallBack: PropTypes.func,
+    maxCallBack: PropTypes.func,
+    placeHolderMin: PropTypes.node,
+    placeHolderMax: PropTypes.node,
+    placeHolderValue: PropTypes.string
+}
+
+MaxMin.defaultProps = {
+    options: [],
+    placeHoldervalue: 'placeholder'
 }
 
 export default MaxMin;

@@ -18,7 +18,16 @@ var min = 25000;
 var max = 200000;
 ReactDOM.render(
     <MaxMin
+        separator={<span className="D(ib) Mt(25px) Fz(14px) C(#94A2B5) Mstart(5px) Mend(5px)">to</span>}
         selectBox={PlainSelect}
+        minProps={{
+            width: '200px',
+            className: 'IbBox Mt(16px)'
+        }}
+        maxProps={{
+            width: '200px',
+            className: 'IbBox Mt(16px)'
+        }}
         minCallback={(value)=>{
             console.log('min value: ', value);
             min = value;
