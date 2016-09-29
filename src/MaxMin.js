@@ -20,9 +20,18 @@ class MaxMin extends React.Component {
     constructor(props) {
         super();
         this.state = {
-            min: props.min || 'placeholder',
-            max: props.max || 'placeholder'
+            min: props.min || props.placeholderValue,
+            max: props.max || props.placeholderValue
         };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.min !== this.state.min) {
+            this.setState({min: (nextProps.min || nextProps.placeholderValue)})
+        }
+        if (nextProps.max !== this.state.max) {
+            this.setState({max: (nextProps.max || nextProps.placeholderValue)})
+        }
     }
 
     render() {
@@ -80,7 +89,7 @@ MaxMin.propTypes = {
 
 MaxMin.defaultProps = {
     options: [],
-    placeHoldervalue: 'placeholder'
+    placeholderValue: 'placeholder'
 }
 
 export default MaxMin;

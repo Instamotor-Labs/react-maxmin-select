@@ -26,7 +26,7 @@ var OptionMax = function (_React$Component) {
     function OptionMax() {
         _classCallCheck(this, OptionMax);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(OptionMax).apply(this, arguments));
+        return _possibleConstructorReturn(this, (OptionMax.__proto__ || Object.getPrototypeOf(OptionMax)).apply(this, arguments));
     }
 
     _createClass(OptionMax, [{
@@ -49,7 +49,7 @@ var OptionMin = function (_React$Component2) {
     function OptionMin() {
         _classCallCheck(this, OptionMin);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(OptionMin).apply(this, arguments));
+        return _possibleConstructorReturn(this, (OptionMin.__proto__ || Object.getPrototypeOf(OptionMin)).apply(this, arguments));
     }
 
     _createClass(OptionMin, [{
@@ -72,16 +72,26 @@ var MaxMin = function (_React$Component3) {
     function MaxMin(props) {
         _classCallCheck(this, MaxMin);
 
-        var _this3 = _possibleConstructorReturn(this, Object.getPrototypeOf(MaxMin).call(this));
+        var _this3 = _possibleConstructorReturn(this, (MaxMin.__proto__ || Object.getPrototypeOf(MaxMin)).call(this));
 
         _this3.state = {
-            min: props.min || 'placeholder',
-            max: props.max || 'placeholder'
+            min: props.min || props.placeholderValue,
+            max: props.max || props.placeholderValue
         };
         return _this3;
     }
 
     _createClass(MaxMin, [{
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(nextProps) {
+            if (nextProps.min !== this.state.min) {
+                this.setState({ min: nextProps.min || nextProps.placeholderValue });
+            }
+            if (nextProps.max !== this.state.max) {
+                this.setState({ max: nextProps.max || nextProps.placeholderValue });
+            }
+        }
+    }, {
         key: 'render',
         value: function render() {
             var _this4 = this;
@@ -153,7 +163,7 @@ MaxMin.propTypes = {
 
 MaxMin.defaultProps = {
     options: [],
-    placeHoldervalue: 'placeholder'
+    placeholderValue: 'placeholder'
 };
 
 exports.default = MaxMin;
