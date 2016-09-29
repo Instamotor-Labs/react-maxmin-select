@@ -24,7 +24,7 @@ var PlainSelect = function (_React$Component) {
     function PlainSelect() {
         _classCallCheck(this, PlainSelect);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(PlainSelect).apply(this, arguments));
+        return _possibleConstructorReturn(this, (PlainSelect.__proto__ || Object.getPrototypeOf(PlainSelect)).apply(this, arguments));
     }
 
     _createClass(PlainSelect, [{
