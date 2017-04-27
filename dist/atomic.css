@@ -1,20 +1,17 @@
 .Bdrs\(4px\) {
   border-radius: 4px;
 }
-.C\(\#94A2B5\) {
-  color: 94A2B;
-}
 .D\(ib\), .IbBox {
   display: inline-block;
 }
 .Fz\(14px\) {
   font-size: 14px;
 }
-.Mt\(25px\) {
-  margin-top: 25px;
-}
 .Mt\(16px\) {
   margin-top: 16px;
+}
+.Mt\(25px\) {
+  margin-top: 25px;
 }
 .Mend\(5px\) {
   margin-right: 5px;

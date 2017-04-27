@@ -12,6 +12,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -152,13 +156,13 @@ var MaxMin = function (_React$Component3) {
 }(_react2.default.Component);
 
 MaxMin.propTypes = {
-    selectBox: _react.PropTypes.func,
-    options: _react.PropTypes.array,
-    minCallBack: _react.PropTypes.func,
-    maxCallBack: _react.PropTypes.func,
-    placeHolderMin: _react.PropTypes.node,
-    placeHolderMax: _react.PropTypes.node,
-    placeHolderValue: _react.PropTypes.string
+    selectBox: _propTypes2.default.func,
+    options: _propTypes2.default.array,
+    minCallBack: _propTypes2.default.func,
+    maxCallBack: _propTypes2.default.func,
+    placeHolderMin: _propTypes2.default.node,
+    placeHolderMax: _propTypes2.default.node,
+    placeHolderValue: _propTypes2.default.string
 };
 
 MaxMin.defaultProps = {
