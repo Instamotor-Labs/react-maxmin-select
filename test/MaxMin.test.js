@@ -1,7 +1,7 @@
 import React from 'react'
-import { shallow, mount } from 'enzyme'
+import { shallow } from 'enzyme'
 import jsdomGlobal from 'jsdom-global'
-import MaxMin from '../src/MaxMin'
+import MaxMin from '../src/'
 
 before(() => {
   global.jsdom = jsdomGlobal()
