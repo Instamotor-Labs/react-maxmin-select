@@ -127,10 +127,10 @@ var MaxMin = function (_React$Component) {
 }(React.Component);
 
 MaxMin.propTypes = {
-  max: PropTypes.oneOfTypPropTypes([PropTypes.number, PropTypes.string]),
+  max: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   maxCallback: PropTypes.func,
   maxProps: PropTypes.object.isRequired,
-  min: PropTypes.oneOfTypPropTypes([PropTypes.number, PropTypes.string]),
+  min: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   minCallback: PropTypes.func,
   minProps: PropTypes.object.isRequired,
   options: PropTypes.array,
