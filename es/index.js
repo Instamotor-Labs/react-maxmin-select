@@ -46,8 +46,8 @@ var MaxMin = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (MaxMin.__proto__ || Object.getPrototypeOf(MaxMin)).call(this));
 
     _this.state = {
-      min: props.min || props.placeholderValue,
-      max: props.max || props.placeholderValue
+      min: props.min || props.placeHolderValue,
+      max: props.max || props.placeHolderValue
     };
     return _this;
   }
@@ -56,10 +56,10 @@ var MaxMin = function (_React$Component) {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       if (nextProps.min !== this.state.min) {
-        this.setState({ min: nextProps.min || nextProps.placeholderValue });
+        this.setState({ min: nextProps.min || nextProps.placeHolderValue });
       }
       if (nextProps.max !== this.state.max) {
-        this.setState({ max: nextProps.max || nextProps.placeholderValue });
+        this.setState({ max: nextProps.max || nextProps.placeHolderValue });
       }
     }
   }, {
@@ -73,9 +73,9 @@ var MaxMin = function (_React$Component) {
           minCallback = _props.minCallback,
           maxCallback = _props.maxCallback,
           separator = _props.separator,
-          placeholderMin = _props.placeholderMin,
-          placeholderMax = _props.placeholderMax,
-          placeholderValue = _props.placeholderValue,
+          placeHolderMin = _props.placeHolderMin,
+          placeHolderMax = _props.placeHolderMax,
+          placeHolderValue = _props.placeHolderValue,
           minProps = _props.minProps,
           maxProps = _props.maxProps;
 
@@ -93,8 +93,8 @@ var MaxMin = function (_React$Component) {
           }),
           React.createElement(
             'option',
-            { disabled: true, value: placeholderValue },
-            placeholderMin
+            { disabled: true, value: placeHolderValue },
+            placeHolderMin
           ),
           options.map(function (item) {
             return React.createElement(OptionMin, { key: 'min-' + item.label + '-' + item.value, max: _this2.state.max, value: item.value, label: item.label });
@@ -112,8 +112,8 @@ var MaxMin = function (_React$Component) {
           }),
           React.createElement(
             'option',
-            { disabled: true, value: placeholderValue },
-            placeholderMax
+            { disabled: true, value: placeHolderValue },
+            placeHolderMax
           ),
           options.map(function (item) {
             return React.createElement(OptionMax, { key: 'max-' + item.label + '-' + item.value, min: _this2.state.min, value: item.value, label: item.label });
@@ -127,28 +127,30 @@ var MaxMin = function (_React$Component) {
 }(React.Component);
 
 MaxMin.propTypes = {
-  max: PropTypes.number.isRequired,
+  max: PropTypes.oneOfTypPropTypes([PropTypes.number, PropTypes.string]),
   maxCallback: PropTypes.func,
   maxProps: PropTypes.object.isRequired,
-  min: PropTypes.number.isRequired,
+  min: PropTypes.oneOfTypPropTypes([PropTypes.number, PropTypes.string]),
   minCallback: PropTypes.func,
   minProps: PropTypes.object.isRequired,
   options: PropTypes.array,
-  placeholderMax: PropTypes.node,
-  placeholderMin: PropTypes.node,
-  placeholderValue: PropTypes.string,
+  placeHolderMax: PropTypes.node,
+  placeHolderMin: PropTypes.node,
+  placeHolderValue: PropTypes.string,
   selectBox: PropTypes.func.isRequired,
   separator: PropTypes.node
 };
 
 MaxMin.defaultProps = {
-  options: [],
-  placeholderValue: 'placeholder',
-  placeholderMin: null,
-  placeholderMax: null,
-  separator: null,
+  max: '',
   maxCallback: function maxCallback() {},
-  minCallback: function minCallback() {}
+  min: '',
+  minCallback: function minCallback() {},
+  options: [],
+  placeHolderMax: null,
+  placeHolderMin: null,
+  placeHolderValue: 'placeHolder',
+  separator: null
 };
 
 export default MaxMin;

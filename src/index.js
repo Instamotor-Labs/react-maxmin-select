@@ -11,23 +11,23 @@ class MaxMin extends React.Component {
   constructor(props) {
     super()
     this.state = {
-      min: props.min || props.placeholderValue,
-      max: props.max || props.placeholderValue,
+      min: props.min || props.placeHolderValue,
+      max: props.max || props.placeHolderValue,
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.min !== this.state.min) {
-      this.setState({ min: (nextProps.min || nextProps.placeholderValue) })
+      this.setState({ min: (nextProps.min || nextProps.placeHolderValue) })
     }
     if (nextProps.max !== this.state.max) {
-      this.setState({ max: (nextProps.max || nextProps.placeholderValue) })
+      this.setState({ max: (nextProps.max || nextProps.placeHolderValue) })
     }
   }
 
   render() {
     const { selectBox: SelectBox, options, minCallback, maxCallback, separator,
-      placeholderMin, placeholderMax, placeholderValue, minProps, maxProps } = this.props
+      placeHolderMin, placeHolderMax, placeHolderValue, minProps, maxProps } = this.props
     return (
       <div>
         <SelectBox
@@ -38,7 +38,7 @@ class MaxMin extends React.Component {
             minCallback(ev.target.value)
           }}
         >
-          <option disabled value={placeholderValue}>{placeholderMin}</option>
+          <option disabled value={placeHolderValue}>{placeHolderMin}</option>
           {options.map(item =>
             <OptionMin key={`min-${item.label}-${item.value}`} max={this.state.max} value={item.value} label={item.label} />,
           )}
@@ -52,7 +52,7 @@ class MaxMin extends React.Component {
             maxCallback(ev.target.value)
           }}
         >
-          <option disabled value={placeholderValue}>{placeholderMax}</option>
+          <option disabled value={placeHolderValue}>{placeHolderMax}</option>
           {options.map(item =>
             <OptionMax key={`max-${item.label}-${item.value}`} min={this.state.min} value={item.value} label={item.label} />,
           )}
@@ -63,28 +63,30 @@ class MaxMin extends React.Component {
 }
 
 MaxMin.propTypes = {
-  max: PropTypes.number.isRequired,
+  max: PropTypes.oneOfTypPropTypes([PropTypes.number, PropTypes.string]),
   maxCallback: PropTypes.func,
   maxProps: PropTypes.object.isRequired,
-  min: PropTypes.number.isRequired,
+  min: PropTypes.oneOfTypPropTypes([PropTypes.number, PropTypes.string]),
   minCallback: PropTypes.func,
   minProps: PropTypes.object.isRequired,
   options: PropTypes.array,
-  placeholderMax: PropTypes.node,
-  placeholderMin: PropTypes.node,
-  placeholderValue: PropTypes.string,
+  placeHolderMax: PropTypes.node,
+  placeHolderMin: PropTypes.node,
+  placeHolderValue: PropTypes.string,
   selectBox: PropTypes.func.isRequired,
   separator: PropTypes.node,
 }
 
 MaxMin.defaultProps = {
-  options: [],
-  placeholderValue: 'placeholder',
-  placeholderMin: null,
-  placeholderMax: null,
-  separator: null,
+  max: '',
   maxCallback: () => {},
+  min: '',
   minCallback: () => {},
+  options: [],
+  placeHolderMax: null,
+  placeHolderMin: null,
+  placeHolderValue: 'placeHolder',
+  separator: null,
 }
 
 export default MaxMin
