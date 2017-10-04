@@ -1,6 +1,9 @@
 ## Change Log
 
-### upcoming (2017/10/04 18:29 +00:00)
+### upcoming (2017/10/04 18:30 +00:00)
+- [0d2c29e](https://github.com/Instamotor-Labs/react-maxmin-select/commit/0d2c29e9b007aaae0a7d29b04b5767ed99fe12f7) changelog (@modosc)
+
+### v2.0.0 (2017/10/04 18:25 +00:00)
 - [48f1c1a](https://github.com/Instamotor-Labs/react-maxmin-select/commit/48f1c1a1bba5aec01d87dda147d2bb309b3ec6fb) fix typo (@modosc)
 - [c1b49b8](https://github.com/Instamotor-Labs/react-maxmin-select/commit/c1b49b8419a9d7d10e8afb664303988a20a538c7) placeholder -> placeHolder (@modosc)
 - [fdfae3c](https://github.com/Instamotor-Labs/react-maxmin-select/commit/fdfae3ce51ff2db2a9b52e78006ed441ebf427e0) fix filenames (@modosc)
