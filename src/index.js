@@ -26,8 +26,10 @@ class MaxMin extends React.Component {
   }
 
   render() {
-    const { selectBox: SelectBox, options, minCallback, maxCallback, separator,
-      placeHolderMin, placeHolderMax, placeHolderValue, minProps, maxProps } = this.props
+    const {
+      selectBox: SelectBox, options, minOptions, maxOptions, minCallback, maxCallback, separator,
+      placeHolderMin, placeHolderMax, placeHolderValue, minProps, maxProps,
+    } = this.props
     return (
       <div>
         <SelectBox
@@ -39,9 +41,8 @@ class MaxMin extends React.Component {
           }}
         >
           <option disabled value={placeHolderValue}>{placeHolderMin}</option>
-          {options.map(item =>
-            <OptionMin key={`min-${item.label}-${item.value}`} max={this.state.max} value={item.value} label={item.label} />,
-          )}
+          {(minOptions.length > 0 ? minOptions : options).map(item =>
+            <OptionMin key={`min-${item.label}-${item.value}`} max={this.state.max} value={item.value} label={item.label} />)}
         </SelectBox>
         {separator}
         <SelectBox
@@ -53,9 +54,8 @@ class MaxMin extends React.Component {
           }}
         >
           <option disabled value={placeHolderValue}>{placeHolderMax}</option>
-          {options.map(item =>
-            <OptionMax key={`max-${item.label}-${item.value}`} min={this.state.min} value={item.value} label={item.label} />,
-          )}
+          {(maxOptions.length > 0 ? maxOptions : options).map(item =>
+            <OptionMax key={`max-${item.label}-${item.value}`} min={this.state.min} value={item.value} label={item.label} />)}
         </SelectBox>
       </div>
     )
@@ -65,9 +65,11 @@ class MaxMin extends React.Component {
 MaxMin.propTypes = {
   max: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   maxCallback: PropTypes.func,
+  maxOptions: PropTypes.array,
   maxProps: PropTypes.object.isRequired,
   min: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   minCallback: PropTypes.func,
+  minOptions: PropTypes.array,
   minProps: PropTypes.object.isRequired,
   options: PropTypes.array,
   placeHolderMax: PropTypes.node,
@@ -80,8 +82,10 @@ MaxMin.propTypes = {
 MaxMin.defaultProps = {
   max: '',
   maxCallback: () => {},
+  maxOptions: [],
   min: '',
   minCallback: () => {},
+  minOptions: [],
   options: [],
   placeHolderMax: null,
   placeHolderMin: null,

@@ -70,6 +70,8 @@ var MaxMin = function (_React$Component) {
       var _props = this.props,
           SelectBox = _props.selectBox,
           options = _props.options,
+          minOptions = _props.minOptions,
+          maxOptions = _props.maxOptions,
           minCallback = _props.minCallback,
           maxCallback = _props.maxCallback,
           separator = _props.separator,
@@ -96,7 +98,7 @@ var MaxMin = function (_React$Component) {
             { disabled: true, value: placeHolderValue },
             placeHolderMin
           ),
-          options.map(function (item) {
+          (minOptions.length > 0 ? minOptions : options).map(function (item) {
             return React.createElement(OptionMin, { key: 'min-' + item.label + '-' + item.value, max: _this2.state.max, value: item.value, label: item.label });
           })
         ),
@@ -115,7 +117,7 @@ var MaxMin = function (_React$Component) {
             { disabled: true, value: placeHolderValue },
             placeHolderMax
           ),
-          options.map(function (item) {
+          (maxOptions.length > 0 ? maxOptions : options).map(function (item) {
             return React.createElement(OptionMax, { key: 'max-' + item.label + '-' + item.value, min: _this2.state.min, value: item.value, label: item.label });
           })
         )
@@ -129,9 +131,11 @@ var MaxMin = function (_React$Component) {
 MaxMin.propTypes = {
   max: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   maxCallback: PropTypes.func,
+  maxOptions: PropTypes.array,
   maxProps: PropTypes.object.isRequired,
   min: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   minCallback: PropTypes.func,
+  minOptions: PropTypes.array,
   minProps: PropTypes.object.isRequired,
   options: PropTypes.array,
   placeHolderMax: PropTypes.node,
@@ -144,8 +148,10 @@ MaxMin.propTypes = {
 MaxMin.defaultProps = {
   max: '',
   maxCallback: function maxCallback() {},
+  maxOptions: [],
   min: '',
   minCallback: function minCallback() {},
+  minOptions: [],
   options: [],
   placeHolderMax: null,
   placeHolderMin: null,
