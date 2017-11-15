@@ -1,10 +1,10 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import jsdomGlobal from 'jsdom-global'
-import MaxMin from '../src/'
+import globalJsdom from 'global-jsdom'
+import MaxMin from '../src'
 
 before(() => {
-  global.jsdom = jsdomGlobal()
+  global.jsdom = globalJsdom()
 })
 
 after(() => {

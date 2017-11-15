@@ -26,8 +26,10 @@ class MaxMin extends React.Component {
   }
 
   render() {
-    const { selectBox: SelectBox, options, minCallback, maxCallback, separator,
-      placeHolderMin, placeHolderMax, placeHolderValue, minProps, maxProps } = this.props
+    const {
+      selectBox: SelectBox, options, minCallback, maxCallback, separator,
+      placeHolderMin, placeHolderMax, placeHolderValue, minProps, maxProps,
+    } = this.props
     return (
       <div>
         <SelectBox
@@ -40,8 +42,7 @@ class MaxMin extends React.Component {
         >
           <option disabled value={placeHolderValue}>{placeHolderMin}</option>
           {options.map(item =>
-            <OptionMin key={`min-${item.label}-${item.value}`} max={this.state.max} value={item.value} label={item.label} />,
-          )}
+            <OptionMin key={`min-${item.label}-${item.value}`} max={this.state.max} value={item.value} label={item.label} />)}
         </SelectBox>
         {separator}
         <SelectBox
@@ -54,8 +55,7 @@ class MaxMin extends React.Component {
         >
           <option disabled value={placeHolderValue}>{placeHolderMax}</option>
           {options.map(item =>
-            <OptionMax key={`max-${item.label}-${item.value}`} min={this.state.min} value={item.value} label={item.label} />,
-          )}
+            <OptionMax key={`max-${item.label}-${item.value}`} min={this.state.min} value={item.value} label={item.label} />)}
         </SelectBox>
       </div>
     )
