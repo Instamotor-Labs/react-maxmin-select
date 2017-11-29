@@ -1,6 +1,6 @@
 {
-  "name": "react-maxmin-select",
-  "version": "2.1.0",
+  "name": "@instamotor-labs/react-maxmin-select",
+  "version": "3.0.0",
   "description": "React select component with max/min constraints",
   "main": "lib/index.js",
   "module": "es/index.js",
